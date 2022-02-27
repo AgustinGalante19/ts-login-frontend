@@ -23,7 +23,7 @@ export const getStock = (req: Request, res: Response) => {
                                 email: response.data.email
                             }
                             const products = result.data.products;
-                            res.render("stock.ejs", { products, usuario });
+                            res.render("onlyUsers/stock.ejs", { products, usuario });
                         });
                 });
         } else {

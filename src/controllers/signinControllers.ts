@@ -36,5 +36,7 @@ export const signinPost = (req: Request, res: Response) => {
                 res.status(401).redirect("/signup");
                 console.log("Token was not received.");
             }
+        }).catch((err) => {
+            res.status(500).send("Invalid user or password. <a href='/signin'>try again</a>").end();
         });
 }

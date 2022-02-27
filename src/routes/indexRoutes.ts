@@ -3,6 +3,7 @@ import { signinGet, signinPost } from '../controllers/signinControllers';
 import { signupGet, signupPost } from '../controllers/signupControllers';
 import { profileGet } from '../controllers/profileControllers';
 import { getStock, addProduct, modifyProductG, modifyProductP } from "../controllers/stockControllers";
+import { indexGet } from '../controllers/indexController';
 
 class Routes {
     public router: Router;
@@ -13,9 +14,7 @@ class Routes {
 
     routes() {
         //Index
-        this.router.get("/", (req, res) => {
-            res.render("index.ejs");
-        })
+        this.router.get("/", indexGet)
 
         //SignUp
         this.router.get("/signup", signupGet);

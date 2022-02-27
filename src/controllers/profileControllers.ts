@@ -19,7 +19,7 @@ export const profileGet = (req: Request, res: Response) => {
                         username: response.data.username,
                         email: response.data.email
                     }
-                    res.render("profile", { usuario });
+                    res.render("onlyUsers/profile.ejs", { usuario });
                 });
         } else {
             //* WORKS.

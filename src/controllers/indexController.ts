@@ -5,14 +5,8 @@ import { IUser } from '../interfaces/interfaces';
 export const indexGet = (req: Request, res: Response, next: NextFunction) => {
 
     const token: string = req.cookies.user_token;
-    console.log(token);
-    
-    if (!token) {
-        res.render("index.ejs");
-        next();
-    }
-    req.headers["auth-token"] = token;
-        axios.get(process.env.TOKEN_VALIDATION || "", {
+    if (token) {
+        axios.get(process.env.GET_DATA || "", {
             headers: {
                 "auth-token": token,
             }
@@ -23,6 +17,9 @@ export const indexGet = (req: Request, res: Response, next: NextFunction) => {
                     username: response.data.username,
                     email: response.data.email
                 }
-                res.render("index.ejs", { usuario });
+                res.render("onlyUsers/index.ejs", { usuario });
             });
+    } else {
+        res.render("index.ejs")
+    }
 }
