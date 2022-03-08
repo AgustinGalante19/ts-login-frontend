@@ -4,7 +4,9 @@ import cors from 'cors';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import routes from './routes/indexRoutes';
-require('dotenv').config()
+import flash from 'connect-flash';
+import session from 'express-session'
+require('dotenv').config();
 class Server {
     app: express.Application;
 
@@ -27,6 +29,13 @@ class Server {
         this.app.use(cors());
         this.app.use(morgan("dev"));
         this.app.use(cookieParser());
+        this.app.use(session({
+            secret: 'mysecretkey',
+            resave: false,
+            saveUninitialized: false
+        }));
+        this.app.use(flash());
+
     }
 
     routes() {

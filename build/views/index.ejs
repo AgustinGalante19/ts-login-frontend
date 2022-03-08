@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./layouts/head.ejs") -%>
+        <title>Home</title>
+        <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <%- include("./layouts/navigation.ejs") -%>
+        <div class="container">
+            <div class="home-card">
+                <h1>Welcome to Stock Master</h1>
+                <hr class="linea">
+                <p>This application offers you a stock storage for anything.</p>
+                <a class="btn-2" href="/signin">Sign in</a>
+            </div>
+        </div>
+        <%- include("./layouts/footer.ejs") -%>
+            <%- include("./layouts/scripts.ejs") -%>
+</body>
+
+</html>

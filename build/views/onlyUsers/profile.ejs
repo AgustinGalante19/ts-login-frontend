@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../layouts/head.ejs") -%>
+        <title>Profile</title>
+</head>
+
+<body>
+    <%- include("../layouts/navigationOU.ejs") -%>
+        <div class="container">
+
+            <div class="profile" style="max-width: 700px; margin: auto">
+                <form action="/logout" method="post">
+                    <div class="card-profile">
+                        <div class="profile-header">
+                            <h1 style="display: inline-block;">
+                                Profile
+                            </h1>
+                        </div>
+                        <div class="profile-content">
+                            <h6>
+                                <%= usuario.id %>
+                            </h6>
+                            <hr>
+                            <h5>
+                                <%= usuario.username %>
+                            </h5>
+                            <hr>
+                            <h5>
+                                <%= usuario.email %>
+                            </h5>
+                            <button class="btn-3" type="submit">Logout</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%- include("../layouts/footer.ejs") -%>
+            <%- include("../layouts/scripts.ejs") -%>
+</body>
+
+</html>

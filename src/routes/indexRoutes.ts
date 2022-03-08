@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { signinGet, signinPost } from '../controllers/signinControllers';
 import { signupGet, signupPost } from '../controllers/signupControllers';
 import { profileGet } from '../controllers/profileControllers';
-import { getStock, addProduct, modifyProductG, modifyProductP } from "../controllers/stockControllers";
+import { getStock, addProductG, addProduct, modifyProductG, modifyProductP } from "../controllers/stockControllers";
 import { indexGet } from '../controllers/indexController';
 
 class Routes {
@@ -33,9 +33,7 @@ class Routes {
             res.render("productForm.ejs");
         });
 
-        this.router.get("/stock/addProduct", (req, res) => {
-            res.render("addProductForm.ejs");
-        });
+        this.router.get("/stock/addProduct", addProductG);
         this.router.post("/addProduct", addProduct);
         this.router.get("/modifyProduct/:id", modifyProductG);
         this.router.post("/modifyProduct/:id", modifyProductP);

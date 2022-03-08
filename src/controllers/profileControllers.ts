@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import axios, { AxiosResponse } from 'axios';
-import { IUser } from '../interfaces/interfaces';
+import { IUser } from '../interfaces/User';
 
-export const profileGet = (req: Request, res: Response) => {
+export const profileGet = (req: Request, res: Response): Promise<Response> | any => {
 
     const token: string = req.cookies.user_token;
     try {
@@ -16,16 +16,15 @@ export const profileGet = (req: Request, res: Response) => {
                 .then((response: AxiosResponse) => {
                     const usuario: IUser = {
                         id: response.data._id,
-                        username: response.data.username,
+                        username: response.data.username.charAt(0).toUpperCase() + response.data.username.slice(1),
                         email: response.data.email
                     }
-                    res.render("onlyUsers/profile.ejs", { usuario });
+                    return res.render("onlyUsers/profile.ejs", { usuario });
                 });
         } else {
-            //* WORKS.
-            res.status(500).send("error <a href='/'>back</a>").end();
+            return res.status(500).send("error <a href='/'>back</a>").end();
         }
-    }catch(err){
-        res.status(500).send(err).end();
+    } catch (err) {
+        return res.status(500).send(err).end();
     }
 }

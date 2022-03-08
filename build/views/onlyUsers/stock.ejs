@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../layouts/head.ejs") -%>
+        <title>Stock</title>
+        <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <%- include("../layouts/navigationOU.ejs") -%>
+        <div class="container-fluid" style="margin-top: 50px;">
+            <div class="row">
+                <div class="col">
+                    <a type="button" href="/stock/addProduct" class="btn btn-modify" style="margin-bottom: 10px;">+</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-container">
+                    <table class="table table-hover table-bordered border-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Brand</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <% if(products.length> 0){ %>
+                                <% products.forEach((product)=> { %>
+                                    <tr>
+                                        <td>
+                                            <%= product.name %>
+                                        </td>
+                                        <td>
+                                            <%= product.brand %>
+                                        </td>
+                                        <td>
+                                            <%= product.model %>
+                                        </td>
+                                        <td>
+                                            <%= product.quantity %>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-modify"href="/modifyProduct/<%= product._id %>">Modify</a>
+                                            <a class="btn btn-remove" id="<%= product._id %>"
+                                                onclick="deleteProduct(this.id)">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                                        <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="/js/delete.js"></script>
+        <%- include("../layouts/footer.ejs") -%>
+            <%- include("../layouts/scripts.ejs") -%>
+</body>
+
+</html>

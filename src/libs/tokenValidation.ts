@@ -13,7 +13,7 @@ export const validateToken = async (req: Request, res: Response, next: NextFunct
         }).catch((err: Error) => {
             res.send("invalid token.");
             res.end();
-            return err
+            return err;
         });
     if (!token) {
         res.send("token not found.").end();

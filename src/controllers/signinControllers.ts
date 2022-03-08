@@ -4,7 +4,8 @@ import axios, { AxiosResponse } from 'axios';
 export const signinGet = (req: Request, res: Response) => {
     const token: string = req.cookies.user_token;
     if (!token) {
-        res.render("signinForm.ejs");
+        const alerta = "";
+        res.render("signinForm.ejs", { alerta });
     } else {
         res.redirect("profile");
     }
@@ -12,7 +13,7 @@ export const signinGet = (req: Request, res: Response) => {
 
 export const signinPost = (req: Request, res: Response) => {
     const { username, password } = req.body;
-    axios.post(process.env.SIGN_IN ||"", { username, password })
+    axios.post(process.env.SIGN_IN || "", { username, password })
         .then((response: AxiosResponse) => {
             const tokenReceived: string = response.headers["auth-token"];
             if (tokenReceived) {
@@ -37,6 +38,7 @@ export const signinPost = (req: Request, res: Response) => {
                 console.log("Token was not received.");
             }
         }).catch((err) => {
-            res.status(500).send("Invalid user or password. <a href='/signin'>try again</a>").end();
+            const alerta = { message: req.flash("error", "invalid user or psw.") }
+            res.render("signinForm.ejs", { alerta });
         });
 }

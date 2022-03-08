@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../layouts/head.ejs") -%>
+        <title>Home</title>
+</head>
+
+<body>
+
+    <%- include("../layouts/navigationOU.ejs") -%>
+        <header class="container">
+            <div class="home-card">
+                <h1>
+                    Hi! <%= usuario.username %>. <span class="welcome">Welcome to Stock Master</span>
+                </h1>
+                <hr class="linea">
+                <p>This application offers you a stock storage for anything.</p>
+                <a class="btn-2" href="/profile">Profile</a>
+            </div>
+        </header>
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include("../layouts/footer.ejs") -%>
+            <%- include("../layouts/scripts.ejs") -%>
+</body>
+
+</html>

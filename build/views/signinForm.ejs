@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./layouts/head.ejs") -%>
+        <title>Sign In</title>
+        <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <%- include("./layouts/navigation.ejs") -%>
+        <div class="container align-items-center justify-content-center">
+            <div class="form-white">
+                <div class="form-container form-signin">
+                    <% if(alerta.message){ %>
+                        <div class="alert alert-danger" role="alert">
+                             Invalid username or password.
+                        </div>
+                    <%} %>
+                    <form action="/signin" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control" name="username" placeholder="username321"
+                                aria-describedby="emailHelp" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" name="password" placeholder="password"
+                                autocomplete="on" required>
+                        </div>
+                        <button type="submit" class="btn btn-modify">Sign in</button>
+                        <a href="/signup" styles="margin: auto;">Don't have an account yet?</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <%- include("./layouts/footer.ejs") -%>
+            <%- include("./layouts/scripts.ejs") -%>
+</body>
+
+</html>

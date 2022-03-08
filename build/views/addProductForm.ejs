@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./layouts/head.ejs") -%>
+        <title>Add Product</title>
+</head>
+
+<body>
+    <%- include("./layouts/navigationOU.ejs") -%>
+        <div class="container form-modify">
+            <div class="form-container form-signin">
+                <form action="/addProduct" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="name"
+                            aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Brand</label>
+                        <input type="text" class="form-control" name="brand" placeholder="brand" autocomplete="on"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Model</label>
+                        <input type="text" class="form-control" name="model" placeholder="model" autocomplete="on"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+                        <input type="text" class="form-control" name="quantity" placeholder="1" autocomplete="on"
+                            required>
+                    </div>
+                    <button type="submit" class="btn btn-modify" style="color: white;background-color: #B63EFF;transition: 0.5s;margin-bottom: 5px;border: none;">Add</button>
+                </form>
+            </div>
+        </div>
+        <%- include("./layouts/footer.ejs") -%>
+        <%- include("./layouts/scripts.ejs") -%>
+</body>
+
+</html>
